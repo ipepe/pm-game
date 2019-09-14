@@ -27,14 +27,24 @@
 <body>
     <script src="javascripts/initialStates.js"></script>
     <script src="javascripts/menuState.js"></script>
+    <script src="javascripts/minigames/1.js"></script>
+    <script src="javascripts/minigames/2.js"></script>
+    <script src="javascripts/minigames/3.js"></script>
+    <script src="javascripts/minigames/4.js"></script>
+    <script src="javascripts/minigames/5.js"></script>
     <script>
       $(document).ready(function(){
 
-        window.game = new Phaser.Game(640, 480, Phaser.AUTO, '');
+        window.game = new Phaser.Game(800, 640, Phaser.AUTO, '');
 
         game.state.add('boot', bootState);
         game.state.add('load', loadState);
         game.state.add('menu', menuState);
+        game.state.add('miniGame1', miniGame1);
+        game.state.add('miniGame2', miniGame2);
+        game.state.add('miniGame3', miniGame3);
+        game.state.add('miniGame4', miniGame4);
+        game.state.add('miniGame5', miniGame5);
         game.state.start('boot');
 
       });
