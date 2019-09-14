@@ -12,9 +12,9 @@ window.menuState = {
     for(var i=0; i<5; i++) {
       (function(n){
         var text = game.add.text(
-          80 + (n * 30),
+          80 + (i * 30),
           240 ,
-          i + 1,
+          n,
           {align: 'center', fill: '#ffffff'}
         );
         var miniGameStateName = 'miniGame' + n;
@@ -26,6 +26,24 @@ window.menuState = {
           game.state.start(miniGameStateName)
         });
       })(i+1);
+    }
+    for(var i=0; i<5; i++) {
+      (function(n){
+        var text = game.add.text(
+          80 + (i * 30),
+          320,
+          n,
+          {align: 'center', fill: '#ffffff'}
+        );
+        var miniGameStateName = 'miniGame' + n;
+        text.anchor.set(0.5);
+        text.strokeThickness = 6;
+        text.inputEnabled = true;
+        text.strokeThickness = 0;
+        text.events.onInputDown.add(function () {
+          game.state.start(miniGameStateName)
+        });
+      })(i+6);
     }
   }
 };
