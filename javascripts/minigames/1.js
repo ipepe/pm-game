@@ -1,3 +1,5 @@
+// rybka do jedzenia pomiedzy petami
+
 window.miniGame1 = {
 
   create: function() {

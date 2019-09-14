@@ -1,3 +1,5 @@
+// nie klikaj jeża
+
 window.miniGame10 = {
 
   create: function() {

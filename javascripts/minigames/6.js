@@ -1,3 +1,5 @@
+// smog i wycieranie
+
 window.miniGame6 = {
 
   create: function() {

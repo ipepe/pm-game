@@ -1,3 +1,5 @@
+// jakas swieczka - dmuchanie
+
 window.miniGame4 = {
 
   create: function() {

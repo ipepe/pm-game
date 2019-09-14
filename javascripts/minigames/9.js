@@ -1,3 +1,5 @@
+// akcelerometr
+
 window.miniGame9 = {
 
   create: function() {

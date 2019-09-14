@@ -1,3 +1,5 @@
+// pompa i duzo klikania
+
 window.miniGame5 = {
 
   create: function() {

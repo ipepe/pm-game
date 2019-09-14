@@ -1,3 +1,5 @@
+// flappy ptak
+
 window.miniGame7 = {
 
   create: function() {

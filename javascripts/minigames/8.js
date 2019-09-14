@@ -1,3 +1,5 @@
+// rowerzysta i odsuwanie przeszkod
+
 window.miniGame8 = {
 
   create: function() {

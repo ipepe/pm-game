@@ -1,3 +1,5 @@
+// whack-a-mole klik na 9
+
 window.miniGame3 = {
 
   create: function() {

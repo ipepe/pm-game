@@ -1,3 +1,5 @@
+// wilk i jajka czyli smietnik i pety
+
 window.miniGame2 = {
 
   create: function() {
