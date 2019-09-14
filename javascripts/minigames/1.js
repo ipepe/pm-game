@@ -6,11 +6,11 @@ window.miniGame1 = {
     // player sprite around
     this.keyboard = game.input.keyboard;
 
+    game.stage.backgroundColor = "#4488AA";
+
     // Create the player sprite and enable physics
     this.player = game.add.sprite(96, 200, 'cigabutt');
     game.physics.enable(this.player, Phaser.Physics.ARCADE);
-
-    // game.physics.enable(this.win, Phaser.Physics.ARCADE);
 
   },
 
