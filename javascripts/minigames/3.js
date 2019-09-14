@@ -1,53 +1,62 @@
 // whack-a-mole klik na 9
 
+var interval = 1000;
+var id;
+
+var coordinates = [];
+
+var all_fajas = [];
+var visible_fajas = [];
+
 window.miniGame3 = {
 
   create: function() {
 
-    // Prepare the keyboard so that the human player can move the
-    // player sprite around
-    this.keyboard = game.input.keyboard;
+    let w = game.width;
+    let h = game.height;
 
-    // Create the player sprite and enable physics
-    this.player = game.add.sprite(16, 16, 'player');
-    game.physics.enable(this.player, Phaser.Physics.ARCADE);
+    let x = 3;
+    let y = 3;   
 
-    // Create the win sprite and enable physics
-    this.win = game.add.sprite(256, 256, 'win');
-    game.physics.enable(this.win, Phaser.Physics.ARCADE);
+    for(let i=0; i<3; i++) {
+      for(let j=0; j<3; j++) {
+        coordinates.push({x: w/x*i, y: h/y*j})    
+      }
+    }
 
+    game.stage.backgroundColor = "#4488AA";
+
+    coordinates.forEach(function(value, index, array) {
+      var p = game.add.sprite(value['x'], value['y'], 'cigabutt');
+      p.inputEnabled = true;
+      p.visible = false;
+      p.events.onInputDown.add(function () {p.visible = false;
+                              }) 
+      all_fajas.push(p);
+    })
+
+    all_fajas[Math.floor(Math.random()*all_fajas.length)].visible = true;
+
+    id = setInterval(showRandomFaja, interval);
   },
 
   update: function() {
+    if (all_fajas.every(function (el) {return el.visible === false})) {
+          alert("Brawo, wygrałeś! Spróbuje jeszcze raz szybciej.")
+          all_fajas[0].visible = true;
+          clearInterval(id)
+          if (interval > 100) {
+            interval -= 100;
+            console.log("Setting interval")
+            console.log(interval)
+            id = setInterval(showRandomFaja, interval);
+          }
+        }
 
-    // When the player sprite and win sprite overlap, the Win function
-    // is called (notice that the Win function is capitalized while
-    // the win sprite is not).
-    game.physics.arcade.overlap(this.player, this.win, this.Win, null, this);
-
-    // Finally, we give the human player a means of moving the 'player' sprite (W,A,S,D
-    // in this case)
-    // Enabling movement along the x axis
-    if (this.keyboard.isDown(Phaser.Keyboard.A)) {
-      this.player.body.velocity.x = -175;
-    } else if (this.keyboard.isDown(Phaser.Keyboard.D)) {
-      this.player.body.velocity.x = 175;
-    } else {
-      this.player.body.velocity.x = 0;
-    }
-    // Enabling movement along the y axis
-    if (this.keyboard.isDown(Phaser.Keyboard.W)) {
-      this.player.body.velocity.y = -175;
-    } else if (this.keyboard.isDown(Phaser.Keyboard.S)) {
-      this.player.body.velocity.y = 175;
-    } else{
-      this.player.body.velocity.y = 0;
-    }
-  },
-
-  Win: function() {
-    // We start the win state
-    game.state.start('win');
   }
+}
 
+function showRandomFaja() {
+  var new_faja = all_fajas[Math.floor(Math.random()*all_fajas.length)];
+  new_faja.visible = true;
 }
